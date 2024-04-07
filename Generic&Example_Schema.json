@@ -1,70 +1,78 @@
-//Generic template schema
-{
-    "invoice": {
-        "invoice_title": string,
-        "invoice_due_date": date, //In the format of YEAR-MONTH-DAY
-        "invoice_cost": number, 
-        "invoice_description": string,
+//Generic invoice schema
+"invoice": {
+    "_id": ObjectId,
+    "invoice_title": string,
+    "invoice_due_date": date, //In the format of YEAR-MONTH-DAY
+    "invoice_cost": number, 
+    "invoice_description": string,
+    //Can either be:
+        //"Not Started"
+        //"In Progress"
+        //"Completed"
+        //"Completed and Paid"
+    "invoice_status": string,
+    "user_id": ObjectId,
+    "customer_id": ObjectId,
+    "payment": {
+        "date_paid": date, //In the format of YEAR-MONTH-DAY
+        "amount_paid": float,
         //Can either be:
-            //"Not Started"
-            //"In Progress"
-            //"Completed"
-            //"Completed and Paid"
-        "invoice_status": string,
-        "user": {
-            "user_first_name": string,
-            "user_last_name": string,
-            "user_email": string,
-            "username": string,
-            "password": string,
-            "user_phone_number": string,
-        },
-        "customer": {
-            "customer_first_name": string,
-            "customer_last_name": string,
-            "customer_email": string,
-            "customer_phone_number": string,
-            "customer_billing_address": string,
-        },
-        "payment": {
-            "date_paid": date, //In the format of YEAR-MONTH-DAY
-            "amount_paid": float,
-            //Can either be:
-                //"cash"
-                //"credit"
-                //"check"
-            "payment_method": string,
-        },
-        "projects": [
-            {
-                "project_name": string,
-                "project_description": number,
-                "project_start_date": date, //In the format of YEAR-MONTH-DAY
-                "project_end_date": date, //In the format of YEAR-MONTH-DAY
-                "project_budget": number,
-                "project_status:" string,
-                "timesheet": [
-                    {
-                        "timesheet_date": date, //In the format of YEAR-MONTH-DAY
-                        "timesheet_hours_worked": number,
-                        "timesheet_description": string,
-                    }
-                ],
-                "tasks": [
-                    {
-                        "task_name": string,
-                        "task_description": string,
-                        "task_start_date": date,
-                        "task_end_date": date, //In the format of YEAR-MONTH-DAY
-                        "task_status": string,
-                    }
-                ]
-            }
-        ]
-    }
+            //"cash"
+            //"credit"
+            //"check"
+        "payment_method": string,
+    },
+    "projects": [
+        {
+            "project_name": string,
+            "project_description": number,
+            "project_start_date": date, //In the format of YEAR-MONTH-DAY
+            "project_end_date": date, //In the format of YEAR-MONTH-DAY
+            "project_budget": number,
+            "project_status:" string,
+            "timesheet": [
+                {
+                    "timesheet_date": date, //In the format of YEAR-MONTH-DAY
+                    "timesheet_hours_worked": number,
+                    "timesheet_description": string,
+                }
+            ],
+            "tasks": [
+                {
+                    "task_name": string,
+                    "task_description": string,
+                    "task_start_date": date,
+                    "task_end_date": date, //In the format of YEAR-MONTH-DAY
+                    "task_status": string,
+                }
+            ]
+        }
+    ]
+}
+//generic user schema
+
+"user": {
+    "_id": ObjectId,
+    "last_name": string,
+    "first_name": string,
+    "email": string,
+    "username": string,
+    "password": string,
+    "phone_number": string,
 }
 
-//Example 1
+//generic customer schema
+"customer": {
+    "_id": ObjectId,
+    "last_name": string,
+    "first_name": string,
+    "email": string,
+    "phone_number": string,
+    "billing_address": string,
+}
+
+
+//Example
 {
     "invoice": {
         "invoice_title": "Cooking Blog for McAfee",
@@ -72,25 +80,12 @@
         "invoice_cost": 432.05,
         "invoice_description": "Creating a cooking blog for McAfee",
         "invoice_status": "In Progress",
-        "user": {
-            "user_first_name": "Zachary",
-            "user_last_name": "Hill",
-            "user_email": "fakeEmail1@email.org",
-            "username": "fakeUsername123",
-            "password": "Password123",
-            "user_phone_number": "7327421299",
-        },
-        "customer": {
-            "customer_first_name": "John",
-            "customer_last_name": "McAfee",
-            "customer_email": "fakeEmail2@email.org",
-            "customer_phone_number": "1234567890",
-            "customer_billing_address": "1234 Fake Address Blvd, New York City, NY 81294",
-        },
+        "user_id": ObjectId("6611c2c4056caabe129beef9"),
+        "customer_id": ObjectId("6611c2c4056caabe129beea7"),
         "payment": {
-            "date_paid": null,
-            "amount_paid": null,
-            "payment_method": null,
+            "date_paid": "2024-03-04",
+            "amount_paid": 432.05,
+            "payment_method": "check",
         },
         "projects": [
             {
@@ -130,5 +125,21 @@
                 ]
             }
         ]
+    }
+    "user": {
+        "_id": ObjectId("6611c2c4056caabe129beef9"),
+        "last_name": "Doe",
+        "first_name": "John",
+        "email": "JohnDoe@aol.com",
+        "username": "JohnDoe123",
+        "password": "password123",
+        "phone_number": "123-456-7890"
+    }
+    "customer:" {
+        "_id": ObjectId("6611c2c4056caabe129beea7"),
+        "last_name": "Mustermann",
+        "first_name": "Max",
+        "email": "maxMustermann@hotmail.com",
+        "billing_address": "1234 Fake Street Fake City, FS 91823"
     }
 }
