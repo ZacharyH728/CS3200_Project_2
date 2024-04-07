@@ -1,0 +1,15 @@
+{
+  "name": "cs3200_project_2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "query1.js",
+  "scripts": {
+    "start": "node query1.js; node query2.js; node query3.js; node query4.js; node query5.js;"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "mongodb": "^6.5.0"
+  }
+}

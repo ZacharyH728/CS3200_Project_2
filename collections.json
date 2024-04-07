@@ -1,0 +1,134 @@
+//Generic template schema
+{
+    "invoice": {
+        "invoice_title": string,
+        "invoice_due_date": date, //In the format of YEAR-MONTH-DAY
+        "invoice_cost": number, 
+        "invoice_description": string,
+        //Can either be:
+            //"Not Started"
+            //"In Progress"
+            //"Completed"
+            //"Completed and Paid"
+        "invoice_status": string,
+        "user": {
+            "user_first_name": string,
+            "user_last_name": string,
+            "user_email": string,
+            "username": string,
+            "password": string,
+            "user_phone_number": string,
+        },
+        "customer": {
+            "customer_first_name": string,
+            "customer_last_name": string,
+            "customer_email": string,
+            "customer_phone_number": string,
+            "customer_billing_address": string,
+        },
+        "payment": {
+            "date_paid": date, //In the format of YEAR-MONTH-DAY
+            "amount_paid": float,
+            //Can either be:
+                //"cash"
+                //"credit"
+                //"check"
+            "payment_method": string,
+        },
+        "projects": [
+            {
+                "project_name": string,
+                "project_description": number,
+                "project_start_date": date, //In the format of YEAR-MONTH-DAY
+                "project_end_date": date, //In the format of YEAR-MONTH-DAY
+                "project_budget": number,
+                "project_status:" string,
+                "timesheet": [
+                    {
+                        "timesheet_date": date, //In the format of YEAR-MONTH-DAY
+                        "timesheet_hours_worked": number,
+                        "timesheet_description": string,
+                    }
+                ],
+                "tasks": [
+                    {
+                        "task_name": string,
+                        "task_description": string,
+                        "task_start_date": date,
+                        "task_end_date": date, //In the format of YEAR-MONTH-DAY
+                        "task_status": string,
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+//Example 1
+{
+    "invoice": {
+        "invoice_title": "Cooking Blog for McAfee",
+        "invoice_due_date": "2024-04-07",
+        "invoice_cost": 432.05,
+        "invoice_description": "Creating a cooking blog for McAfee",
+        "invoice_status": "In Progress",
+        "user": {
+            "user_first_name": "Zachary",
+            "user_last_name": "Hill",
+            "user_email": "fakeEmail1@email.org",
+            "username": "fakeUsername123",
+            "password": "Password123",
+            "user_phone_number": "7327421299",
+        },
+        "customer": {
+            "customer_first_name": "John",
+            "customer_last_name": "McAfee",
+            "customer_email": "fakeEmail2@email.org",
+            "customer_phone_number": "1234567890",
+            "customer_billing_address": "1234 Fake Address Blvd, New York City, NY 81294",
+        },
+        "payment": {
+            "date_paid": null,
+            "amount_paid": null,
+            "payment_method": null,
+        },
+        "projects": [
+            {
+                "project_name": "Cooking Blog",
+                "project_description": "McAfee's cooking blog made with php and haskell",
+                "project_start_date": "2024-03-02",
+                "project_end_date": "2024-04-07",
+                "project_budget": 432.05,
+                "project_status": "In Progress",
+                "timesheet": [
+                    {
+                        "timesheet_date": "2024-03-15",
+                        "timesheet_hours_worked": 32.2,
+                        "timesheet_description": "finished the frontend",
+                    },
+                    {
+                        "timesheet_date": "2024-03-04",
+                        "timesheet_hours_worked": 1,
+                        "timesheet_description": "finished the backend",
+                    },
+                ],
+                "tasks": [
+                    {
+                        "task_name": "Create a working website",
+                        "task_description": "Actual finish the blog",
+                        "task_start_date": "2024-03-18",
+                        "task_end_date": null,
+                        "tasK_status": "In Progress",
+                    },
+                    {
+                        "task_name": "Do the css",
+                        "task_description": "Finish designing the blog with css",
+                        "task_start_date": "2024-04-01",
+                        "task_end_date": "2024-04-04",
+                        "task_status": "Completed",
+                    }
+                ]
+            }
+        ]
+    }
+}
